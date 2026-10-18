@@ -1,0 +1,198 @@
+/* ButtonT4Modul1.css - LARGER buttons version */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+/* Burbank Fonts */
+@font-face {font-family: "Burbank Big Condensed"; src: url("//db.onlinewebfonts.com/t/cdc8c3de1e6bd5a9a67c6a001f9fedd0.eot"); src: url("//db.onlinewebfonts.com/t/cdc8c3de1e6bd5a9a67c6a001f9fedd0.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/cdc8c3de1e6bd5a9a67c6a001f9fedd0.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/cdc8c3de1e6bd5a9a67c6a001f9fedd0.woff") format("woff"), url("//db.onlinewebfonts.com/t/cdc8c3de1e6bd5a9a67c6a001f9fedd0.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/cdc8c3de1e6bd5a9a67c6a001f9fedd0.svg#Burbank Big Condensed") format("svg"); }
+
+@font-face {font-family: "Burbank Big Regular"; src: url("//db.onlinewebfonts.com/t/8dd35a5ee9eab8c7c069365ac14fed9a.eot"); src: url("//db.onlinewebfonts.com/t/8dd35a5ee9eab8c7c069365ac14fed9a.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/8dd35a5ee9eab8c7c069365ac14fed9a.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/8dd35a5ee9eab8c7c069365ac14fed9a.woff") format("woff"), url("//db.onlinewebfonts.com/t/8dd35a5ee9eab8c7c069365ac14fed9a.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/8dd35a5ee9eab8c7c069365ac14fed9a.svg#Burbank Big Regular") format("svg"); }
+
+@font-face {
+    font-family: "Burbank Small Black";
+    src: url("https://db.onlinewebfonts.com/t/9f62e2b9b9235acb5512c7f03cf0f792.eot");
+    src: url("https://db.onlinewebfonts.com/t/9f62e2b9b9235acb5512c7f03cf0f792.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/9f62e2b9b9235acb5512c7f03cf0f792.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/9f62e2b9b9235acb5512c7f03cf0f792.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/9f62e2b9b9235acb5512c7f03cf0f792.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/9f62e2b9b9235acb5512c7f03cf0f792.svg#Burbank Small Black")format("svg");
+}
+
+/* Button Container */
+.c4 {
+    display: grid;
+    place-content: center;
+}
+
+/* LARGER Button Styles - MATCHING ORIGINAL DESIGN */
+.c4 .btn {
+position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 2.6em; /* HUGE 3em font! */
+    font-family: "Burbank Small Black", sans-serif;
+    /* ADJUSTED padding for massive font */
+    padding: 25px 50px 22px 50px; /* Much larger padding */
+    margin: 20px; /* More space around buttons */
+    border: none;
+    cursor: pointer;
+    transition: background 100ms ease, color 100ms ease;
+    /* ADJUSTED min-width for massive text */
+    min-width: 300px; /* Much wider for big text */
+    text-align: center;
+    border-radius: 0;
+    /* Optional: Add text shadow for better readability */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.c4 .btn:hover {
+    background: white;
+    color: black;
+    transition: background 150ms linear, color 150ms linear;
+}
+
+/* This is the KEY part - the polygon clip-path that creates the unique shape */
+.c4 .btn:before {
+    position: absolute;
+    content: "";
+    inset: 0;
+    background: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+    /* ORIGINAL polygon clip-path */
+    clip-path: polygon(-10% -10%, -10% 110%, 10% 90%, 6% 10%, 94% 10%, 91% 90%, 10% 90%, -10% 110%, 110% 110%, 110% -10%);
+}
+
+.c4 .btn:after {
+    position: absolute;
+    content: "";
+    inset: 0;
+    border: 0px solid white;
+}
+
+/* Original border animation - ADJUSTED for larger buttons */
+.c4 .btn:hover:after {
+    animation: 300ms ease c4border;
+    animation-fill-mode: forwards;
+}
+
+@keyframes c4border {
+    0%   {
+        inset: -20px; /* Slightly larger for bigger button */
+        border: 2px solid white;
+        border-radius: 12px; /* Slightly larger */
+        opacity: 0;
+    }
+    60%  {
+        inset: -9px; /* Adjusted for bigger button */
+        border: 6px solid white;
+        border-radius: 9px; /* Adjusted */
+        opacity: 0.7;
+    }
+    100% {
+        inset: -10px; /* Adjusted for bigger button */
+        border: 4px solid white;
+        border-radius: 10px; /* Adjusted */
+        opacity: 0.7;
+    }
+}
+
+.c4 .btn:hover .btntext {
+    animation: 200ms ease c4text;
+    animation-fill-mode: forwards;
+}
+
+@keyframes c4text {
+    0%   {
+        transform: translateY(0);
+    }
+    60%  {
+        transform: translateY(-2px); /* Slightly larger bounce */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Color Variations */
+.c4 .btn.primary {
+    background: rgba(255, 107, 53, 0.8); /* Orange */
+}
+
+.c4 .btn.secondary {
+    background: rgba(59, 130, 246, 0.8); /* Blue */
+}
+
+.c4 .btn.success {
+    background: rgba(34, 197, 94, 0.8); /* Green */
+}
+
+.c4 .btn.warning {
+    background: rgba(245, 158, 11, 0.8); /* Yellow */
+}
+
+.c4 .btn.danger {
+    background: rgba(239, 68, 68, 0.8); /* Red */
+}
+
+/* IMPORTANT: Override hover colors to match original design */
+/* In original, buttons turn white with black text on hover */
+.c4 .btn:hover {
+    background: white !important;
+    color: black !important;
+}
+
+/* Make sure text stays white before hover */
+.c4 .btn .btntext {
+    color: white;
+    transition: color 150ms linear;
+    /* Larger button text */
+    font-size: inherit;
+}
+
+.c4 .btn:hover .btntext {
+    color: black;
+}
+
+/* EXTRA LARGE option - if you want even bigger buttons */
+.c4 .btn.xl {
+    font-size: 1.8em;
+    padding: 20px 40px 18px 40px;
+    min-width: 220px;
+}
+
+.c4 .btn.xl:hover:after {
+    animation: 300ms ease c4border-xl;
+}
+
+@keyframes c4border-xl {
+    0%   {
+        inset: -24px;
+        border: 2px solid white;
+        border-radius: 14px;
+        opacity: 0;
+    }
+    60%  {
+        inset: -11px;
+        border: 6px solid white;
+        border-radius: 11px;
+        opacity: 0.7;
+    }
+    100% {
+        inset: -12px;
+        border: 4px solid white;
+        border-radius: 12px;
+        opacity: 0.7;
+    }
+}
+
+/* MEDIUM option - if you want medium size */
+.c4 .btn.md {
+    font-size: 1.2em;
+    padding: 12px 22px 10px 22px;
+    min-width: 150px;
+}
+
+/* SMALL option - original size */
+.c4 .btn.sm {
+    font-size: 1.1em;
+    padding: 10px 18px 8px 18px;
+    min-width: 140px;
+}
